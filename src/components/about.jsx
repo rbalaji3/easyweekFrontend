@@ -4,7 +4,6 @@ import React, { Component } from "react";
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 // Import Hamoni Sync
-import Hamoni from "hamoni-sync";
 export default class about extends Component {
   constructor() {
     super();
@@ -34,37 +33,38 @@ export default class about extends Component {
   };
   render() {
     const { data } = this.state;
-    return (
-      <div className="App">
-        <header className="App-header">
+    if (this.props.show) {
+      return (
+        <div className="App">
 
-          <h1 className="App-title">Welcome to your Schedule</h1>
-        </header>
-        <div>
-          <ReactTable
-            data={data}
-            columns={[
-              {
-                Header: "Day of the week",
-                accessor: "day",
-                Cell: this.renderEditable
-              },
-              {
-                Header: "Class Title",
-                accessor: "classtitle",
-                Cell: this.renderEditable
-              },
-              {
-                Header: "Time",
-                accessor: "time",
-                Cell: this.renderEditable
-              }
-            ]}
-            defaultPageSize={10}
-            className="-striped -highlight"
-          />
+          <div>
+            <ReactTable
+              data={data}
+              columns={[
+                {
+                  Header: "Day of the week",
+                  accessor: "day",
+                  Cell: this.renderEditable
+                },
+                {
+                  Header: "Class Title",
+                  accessor: "classtitle",
+                  Cell: this.renderEditable
+                },
+                {
+                  Header: "Time",
+                  accessor: "time",
+                  Cell: this.renderEditable
+                }
+              ]}
+              defaultPageSize={10}
+              className="-striped -highlight"
+            />
+          </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return (<div> </div>)
+    }
   }
 }

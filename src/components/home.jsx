@@ -2,12 +2,17 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import { Jumbotron, Grid, Row, Col, Image, Button} from 'react-bootstrap';
 import './home.css';
+import About from './about';
+
+
 
 export default class Home extends Component {
   constructor() {
       super();
       this.handleSubmit = this.handleSubmit.bind(this);
-
+      this.state = {
+        show: false
+      };
     }
 
   handleSubmit(event) {
@@ -18,18 +23,33 @@ export default class Home extends Component {
     const major = data.get('major');
     const standing = data.get('standing');
 
-    console.log(name);
-    console.log(courses);
-    console.log(major);
-    console.log(standing);
+    const obj = {
+      name: name,
+      courses: courses,
+      major: major,
+      standing: standing
 
-    this.props.history.push('/about')
+    };
+
+   //  event.preventDefault();
+   //  fetch('localhost:5000/register', {
+   //   method: 'post',
+   //   headers: {'Content-Type':'application/json'},
+   //   body: JSON.stringify(obj)
+   // }).then((response) => {
+   //   console.log("Post sent status: " + response.status)
+   //
+   // })
+   this.setState({ show: true });
+
+    // this.props.history.push('/about')
     //send all of information to backend
     //recieve schedule output
     // route to new page to display schedule output
   }
   render() {
     return (
+      <div>
       <Grid>
         <Jumbotron>
           <h2> Welcome to EasyWeek </h2>
@@ -55,6 +75,13 @@ export default class Home extends Component {
           </form>
         </Jumbotron>
       </Grid>
+      <div>
+        <About show={this.state.show}>
+
+        </About>
+      </div>
+      </div>
+
     )
   }
 }

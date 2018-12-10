@@ -22,14 +22,23 @@ export default class Home extends Component {
     const courses = data.get('courses');
     const major = data.get('major');
     const standing = data.get('standing');
+    const techCourses = data.get('techCourses');
+    const minimumCredits = data.get('minimumCredits');
+    const maximumCredits = data.get('maximumCredits');
+    const minorCourses = data.get('minor');
 
     const obj = {
       name: name,
       courses: courses,
       major: major,
-      standing: standing
-
+      standing: standing,
+      techCourses: techCourses,
+      minimumCredits: minimumCredits,
+      maximumCredits: maximumCredits,
+      minorrelatedCourses: minorCourses
     };
+    var myJSON = JSON.stringify(obj);
+    console.log(myJSON)
 
    //  event.preventDefault();
    //  fetch('localhost:5000/register', {
@@ -70,6 +79,22 @@ export default class Home extends Component {
             <div>
               <label htmlFor="standing">Enter your standing (Freshman, Sophmore etc.)  </label>
               <input id="standing" name="standing" type="text" />
+            </div>
+            <div>
+              <label htmlFor="techCourses">Enter the maximum amount of technical courses you are willing to take</label>
+              <input id="techCourses" name="techCourses" type="text" />
+            </div>
+            <div>
+              <label htmlFor="standing">Maximum number of credits you are willing to take</label>
+              <input id="maximumCredits" name="maximumCredits" type="text" />
+            </div>
+            <div>
+              <label htmlFor="standing">Minimum number of credits you are willing to take</label>
+              <input id="minimumCredits" name="minimumCredits" type="text" />
+            </div>
+            <div>
+              <label htmlFor="standing">Number of possible minor-related courses to take</label>
+              <input id="minor" name="minor" type="text" />
             </div>
             <button>Send data!</button>
           </form>

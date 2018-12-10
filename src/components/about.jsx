@@ -36,7 +36,6 @@ export default class about extends Component {
     if (this.props.show) {
       return (
         <div className="App">
-
           <div>
             <ReactTable
               data={data}

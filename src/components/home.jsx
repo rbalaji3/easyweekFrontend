@@ -26,6 +26,7 @@ export default class Home extends Component {
     const minimumCredits = data.get('minimumCredits');
     const maximumCredits = data.get('maximumCredits');
     const minorCourses = data.get('minor');
+    const sem = data.get('sem');
 
     const obj = {
       name: name,
@@ -35,7 +36,8 @@ export default class Home extends Component {
       techCourses: techCourses,
       minimumCredits: minimumCredits,
       maximumCredits: maximumCredits,
-      minorrelatedCourses: minorCourses
+      minorrelatedCourses: minorCourses,
+      semester: sem
     };
     var myJSON = JSON.stringify(obj);
     console.log(myJSON)
@@ -95,6 +97,10 @@ export default class Home extends Component {
             <div>
               <label htmlFor="standing">Number of possible minor-related courses to take</label>
               <input id="minor" name="minor" type="text" />
+            </div>
+            <div>
+              <label htmlFor="standing">Which semester are you in</label>
+              <input id="sem" name="sem" type="text" />
             </div>
             <button>Send data!</button>
           </form>

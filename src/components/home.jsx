@@ -42,12 +42,12 @@ export default class Home extends Component {
       year: year
     };
     var request = new XMLHttpRequest();
-    request.open("POST", "http://0.0.0.0:5000/register");
+    request.open("POST", "http://10.194.154.49:5000/register");
     request.setRequestHeader("Content-Type", "text/plain; charset=UTF-8");
     request.send(JSON.stringify(obj))
     console.log("Done")
 
-    request.open("GET", "http://0.0.0.0:5000/register")
+    request.open("GET", "http://10.194.154.49:5000/register")
     request.onload = function() {
       var schedule = JSON.parse(request.responseText);
       if (request.readyState == 4 && request.status == "200") {

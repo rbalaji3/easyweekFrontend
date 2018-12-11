@@ -37,15 +37,21 @@ export default class Home extends Component {
       maximumCredits: maximumCredits,
       minorrelatedCourses: minorCourses
     };
-    return fetch('http://10.194.154.49:5000/register', {
-        method: 'POST',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(obj),
-    }).then((response) => response.json())
+    var request = new XMLHttpRequest();
+    request.open("POST", "http://0.0.0.0:5000/register");
+    request.setRequestHeader("Content-Type", "text/plain; charset=UTF-8");
+    request.send(JSON.stringify(obj))
     console.log("Done")
+
+    request.open("GET", "http://0.0.0.0:5000/register")
+    request.onload = function() {
+      var schedule = JSON.parse(request.responseText);
+      if (request.readyState == 4 && request.status == "200") {
+          console.log(schedule)
+      } else {
+          console.error(schedule)
+      }
+    }
 
    //  event.preventDefault();
    //  fetch('localhost:5000/register', {

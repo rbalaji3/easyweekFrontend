@@ -27,6 +27,7 @@ export default class Home extends Component {
     const maximumCredits = data.get('maximumCredits');
     const minorCourses = data.get('minor');
     const sem = data.get('sem');
+    const year = data.get('year');
 
     const obj = {
       name: name,
@@ -37,7 +38,8 @@ export default class Home extends Component {
       minimumCredits: minimumCredits,
       maximumCredits: maximumCredits,
       minorrelatedCourses: minorCourses,
-      semester: sem
+      semester: sem,
+      year: year
     };
     var request = new XMLHttpRequest();
     request.open("POST", "http://0.0.0.0:5000/register");
@@ -112,8 +114,12 @@ export default class Home extends Component {
               <input id="minor" name="minor" type="text" />
             </div>
             <div>
-              <label htmlFor="standing">Which semester are you in</label>
+              <label htmlFor="semester">Which semester are you in</label>
               <input id="sem" name="sem" type="text" />
+            </div>
+            <div>
+              <label htmlFor="year">Which year are you in</label>
+              <input id="year" name="year" type="text" />
             </div>
             <button>Send data!</button>
           </form>

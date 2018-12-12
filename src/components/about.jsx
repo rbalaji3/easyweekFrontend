@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import Schedule from "Schedule.jsx";
 // Import React Table
 import ReactTable from "react-table";
 import "react-table/react-table.css";
